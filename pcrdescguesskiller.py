@@ -1,6 +1,7 @@
 from hoshino import Service
 from hoshino.typing import CQEvent
 from hoshino.modules.priconne import _pcr_data
+from hoshino.modules.priconne import chara
 
 import hoshino
 import os
@@ -78,8 +79,10 @@ async def on_sended_chara_info(bot, ev: CQEvent):
                                 if ANSWERS_DIC_CACHE[cache_chara_id]['血型'] == BLOOD_TYPE:
                                     answers[cache_chara_id] = ANSWERS_DIC_CACHE[cache_chara_id]
                             ANSWERS_DIC_CACHE = answers
+                    print(ANSWERS_DIC_CACHE)
                     for cache_chara_id in ANSWERS_DIC_CACHE.keys():
-                        await bot.send(ev, answers[cache_chara_id]['名字'])
+                        chara_name = chara.fromid(cache_chara_id).name
+                        await bot.send(ev, chara_name)
                     game_status.turn_off(ev.group_id)
                 #print(ANSWERS_DIC_CACHE)
             elif '猜对了，真厉害！' in s:
