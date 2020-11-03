@@ -80,6 +80,7 @@ async def on_sended_chara_info(bot, ev: CQEvent):
                             ANSWERS_DIC_CACHE = answers
                     for cache_chara_id in ANSWERS_DIC_CACHE.keys():
                         await bot.send(ev, answers[cache_chara_id]['名字'])
+                    game_status.turn_off(ev.group_id)
                 #print(ANSWERS_DIC_CACHE)
             elif '猜对了，真厉害！' in s:
                 game_status.turn_off(ev.group_id)
