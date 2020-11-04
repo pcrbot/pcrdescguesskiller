@@ -72,7 +72,7 @@ async def on_sended_chara_info(bot, ev: CQEvent):
                             chara_properties = _pcr_data.CHARA_PROFILE[chara_id][chara_info_list[1]]
                             if chara_properties == chara_info_list[2]:
                                 ANSWERS_DIC_CACHE[chara_id] = _pcr_data.CHARA_PROFILE[chara_id]
-                if len(ANSWERS_DIC_CACHE)<4:
+                if len(ANSWERS_DIC_CACHE)<4 and len(ANSWERS_DIC_CACHE)!=0:
                     answers = {}
                     if not BLOOD_TYPE == '':
                             for cache_chara_id in ANSWERS_DIC_CACHE.keys(): 
